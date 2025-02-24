@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rive_animation/screens/recommender/recommender.dart';
 
 import '../../model/book.dart';
 import 'components/book_card.dart';
@@ -18,9 +20,37 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20, right: 15),
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Recommender(),
+                          )
+                        );
+                      }, 
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 60, 149, 217),
+                        minimumSize: const Size(200, 60),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+                        )
+                      ),
+                      icon: const Icon(
+                        CupertinoIcons.plus_circled,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      label: const Text('New recommendation'),
+                      ),
+                  ),
+                ),
+                const SizedBox(height: 20),
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
                     "Recents",
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
